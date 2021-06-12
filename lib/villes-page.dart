@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:movie_cinema_app/GlobalVariables.dart';
 import 'dart:convert';
 import './cinemas-page.dart';
 class VillePage extends StatefulWidget {
@@ -44,7 +45,7 @@ class _VillePageState extends State<VillePage> {
     loadVille();
   }
   void loadVille(){
-    String url = "http://192.168.8.106:8080/villes";
+    String url = GlobalData.host+"/villes";
     http.get(Uri.parse(url))
       .then((resp){
         setState(() {
