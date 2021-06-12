@@ -55,19 +55,22 @@ class _SallesPageState extends State<SallesPage> {
                                       //key: ValueKey(new Random().nextInt(100)),
                                       width: 150,
                                     ),
-                                    Column(
-                                      children:<Widget> [
-                                        ...(this.listSalles[index]['projections'] as List<dynamic>).map((projection){
-                                          return ElevatedButton(
+                                    IntrinsicWidth(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                                        children:<Widget> [
+                                          ...(this.listSalles[index]['projections'] as List<dynamic>).map((projection){
+                                            return ElevatedButton(
                                               child: Text("${projection['seance']['heureDebut']} (${projection['film']['duree']}H) - ${projection['prix']}DH",),
                                               style: ElevatedButton.styleFrom(
-                                                primary: Colors.deepOrangeAccent
+                                                primary: Colors.deepOrangeAccent,
                                               ),
                                               onPressed: (){},
-                                          );
-                                        })
-                                      ],
-                                    )
+                                            );
+                                          })
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )
