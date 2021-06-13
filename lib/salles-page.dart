@@ -84,10 +84,50 @@ class _SallesPageState extends State<SallesPage> {
                                 children: <Widget> [
                                   Row(
                                     children: <Widget> [
-                                      Text("nombre des places disponibles : ${numberPlacesAvailable(this.listSalles[index]['currentProjection'])}")
+                                      Text("nombre des places disponibles : ${this.listSalles[index]['currentProjection']['availablePlacesCount']}")
                                     ],
                                   ),
-                                  Row(
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          hintText: "Votre Nom : ",
+                                          hintStyle: TextStyle(
+                                            color: Colors.black,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          hintText: "Code Payement : ",
+                                          hintStyle: TextStyle(
+                                            color: Colors.black,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          hintText: "Numeros des Tickets : ",
+                                          hintStyle: TextStyle(
+                                            color: Colors.black,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
+                                    child: ElevatedButton(onPressed: (){}, child: Text("Acheter!!"),style: ElevatedButton.styleFrom(
+                                      primary: Colors.lightGreen,
+                                    ),),
+                                  ),
+                                  Wrap(
                                     children: <Widget> [
                                       ...(this.listSalles[index]['currentProjection']['listTickets'] as List<dynamic>).map((ticket){
                                         if(ticket['reserve']==false)
@@ -95,8 +135,10 @@ class _SallesPageState extends State<SallesPage> {
                                             width: 50,
                                             padding: EdgeInsets.all(2),
                                             child: ElevatedButton(
-                                              child: Text("${ticket['place']['numero']}"),
-                                              onPressed: (){},
+                                              child: Text("${ticket['place']['numero']}", style: TextStyle(fontSize: 11),),
+                                              onPressed: (){
+
+                                              },
                                             ),
                                           );
                                         else return Container();
@@ -153,6 +195,7 @@ class _SallesPageState extends State<SallesPage> {
       setState(() {
         projection['listTickets'] = json.decode(resp.body)['_embedded']['tickets'];
         salle['currentProjection']=projection;
+        projection['availablePlacesCount'] = numberPlacesAvailable(projection);
       });
     }).catchError((err){
       print(err);
