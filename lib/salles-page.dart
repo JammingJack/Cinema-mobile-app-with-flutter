@@ -80,20 +80,29 @@ class _SallesPageState extends State<SallesPage> {
                             if(this.listSalles[index]['currentProjection']!=null &&
                                 this.listSalles[index]['currentProjection']['listTickets']!=null &&
                                 this.listSalles[index]['currentProjection']['listTickets'].length>0)
-                              Row(
+                              Column(
                                 children: <Widget> [
-                                  ...(this.listSalles[index]['currentProjection']['listTickets'] as List<dynamic>).map((ticket){
-                                    if(ticket['reserve']==false)
-                                      return Container(
-                                        width: 50,
-                                        padding: EdgeInsets.all(2),
-                                        child: ElevatedButton(
-                                          child: Text("${ticket['place']['numero']}"),
-                                          onPressed: (){},
-                                        ),
-                                      );
-                                    else return Container();
-                                  })
+                                  Row(
+                                    children: <Widget> [
+                                      Text("nombre des places disponibles : ${numberPlacesAvailable(this.listSalles[index]['currentProjection'])}")
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget> [
+                                      ...(this.listSalles[index]['currentProjection']['listTickets'] as List<dynamic>).map((ticket){
+                                        if(ticket['reserve']==false)
+                                          return Container(
+                                            width: 50,
+                                            padding: EdgeInsets.all(2),
+                                            child: ElevatedButton(
+                                              child: Text("${ticket['place']['numero']}"),
+                                              onPressed: (){},
+                                            ),
+                                          );
+                                        else return Container();
+                                      })
+                                    ],
+                                  )
                                 ],
                               )
                           ],
@@ -124,6 +133,7 @@ class _SallesPageState extends State<SallesPage> {
     String url = salle['_links']['projections']['href']
         .toString()
         .replaceAll("{?projection}", "?projection=filmNeededInfoProjection");
+    print(url);
     http.get(Uri.parse(url)).then((resp) {
       setState(() {
         salle['projections'] = json.decode(resp.body)['_embedded']['projections'];
@@ -138,6 +148,7 @@ class _SallesPageState extends State<SallesPage> {
   void onLoadTickets(projection, salle) {
     String url = projection['_links']['tickets']['href'].toString().replaceAll('{?projection}', '?projection=ticketProj');
     //String url2=GlobalData.host+"/projections/${projection['id']}tickets?projections=ticketsProj";
+    print('ticket  '+url);
     http.get(Uri.parse(url)).then((resp){
       setState(() {
         projection['listTickets'] = json.decode(resp.body)['_embedded']['tickets'];
@@ -146,5 +157,13 @@ class _SallesPageState extends State<SallesPage> {
     }).catchError((err){
       print(err);
     });
+  }
+
+  numberPlacesAvailable(projection){
+    int count=0;
+    for(int i=0;i<projection['tickets'].length;i++){
+      if(projection['tickets'][i]['reserve']==false)++count;
+    }
+    return count;
   }
 }
