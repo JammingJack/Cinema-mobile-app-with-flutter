@@ -63,9 +63,11 @@ class _SallesPageState extends State<SallesPage> {
                                             return ElevatedButton(
                                               child: Text("${projection['seance']['heureDebut']} (${projection['film']['duree']}H) - ${projection['prix']}DH",),
                                               style: ElevatedButton.styleFrom(
-                                                primary: Colors.deepOrangeAccent,
+                                                primary: (this.listSalles[index]['currentProjection']['id']==projection['id'])?Colors.lightGreen:Colors.deepOrangeAccent,
                                               ),
-                                              onPressed: (){},
+                                              onPressed: (){
+                                                onLoadTickets(projection, this.listSalles[index]);
+                                              },
                                             );
                                           })
                                         ],
@@ -73,6 +75,26 @@ class _SallesPageState extends State<SallesPage> {
                                     ),
                                   ],
                                 ),
+                              ),
+
+                            if(this.listSalles[index]['currentProjection']!=null &&
+                                this.listSalles[index]['currentProjection']['listTickets']!=null &&
+                                this.listSalles[index]['currentProjection']['listTickets'].length>0)
+                              Row(
+                                children: <Widget> [
+                                  ...(this.listSalles[index]['currentProjection']['listTickets'] as List<dynamic>).map((ticket){
+                                    if(ticket['reserve']==false)
+                                      return Container(
+                                        width: 50,
+                                        padding: EdgeInsets.all(2),
+                                        child: ElevatedButton(
+                                          child: Text("${ticket['place']['numero']}"),
+                                          onPressed: (){},
+                                        ),
+                                      );
+                                    else return Container();
+                                  })
+                                ],
                               )
                           ],
                         ));
@@ -89,7 +111,6 @@ class _SallesPageState extends State<SallesPage> {
 
   loadSalles() {
     String url = this.widget.cinema['_links']['salles']['href'];
-    ;
     http.get(Uri.parse(url)).then((resp) {
       setState(() {
         this.listSalles = json.decode(resp.body)['_embedded']['salles'];
@@ -105,11 +126,24 @@ class _SallesPageState extends State<SallesPage> {
         .replaceAll("{?projection}", "?projection=filmNeededInfoProjection");
     http.get(Uri.parse(url)).then((resp) {
       setState(() {
-        salle['projections'] =
-            json.decode(resp.body)['_embedded']['projections'];
+        salle['projections'] = json.decode(resp.body)['_embedded']['projections'];
         salle['currentProjection'] = salle['projections'][0];
+        salle['currentProjection']['listTickets']=[];
       });
     }).catchError((err) {
+      print(err);
+    });
+  }
+
+  void onLoadTickets(projection, salle) {
+    String url = projection['_links']['tickets']['href'].toString().replaceAll('{?projection}', '?projection=ticketProj');
+    //String url2=GlobalData.host+"/projections/${projection['id']}tickets?projections=ticketsProj";
+    http.get(Uri.parse(url)).then((resp){
+      setState(() {
+        projection['listTickets'] = json.decode(resp.body)['_embedded']['tickets'];
+        salle['currentProjection']=projection;
+      });
+    }).catchError((err){
       print(err);
     });
   }
