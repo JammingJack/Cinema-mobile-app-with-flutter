@@ -58,395 +58,1053 @@ class MockAPI {
   }
 
   static Future<Map<String, dynamic>> loadSalles() {
-    return Future.value({
-      '_embedded': {
-        "salles": [
-          {
-            "id": 37,
-            "name": "Salle1",
-            "nombrePlace": 6,
-            "_links": {
-              "self": {"href": "http://192.168.8.106:8080/salles/37"},
-              "salle": {"href": "http://192.168.8.106:8080/salles/37"},
-              "projections": {
-                "href":
-                    "http://192.168.8.106:8080/salles/37/projections{?projection}",
-                "templated": true
+    return Future.value(
+        {
+          "_embedded": {
+            "salles": [
+              {
+                "id": 1,
+                "name": "Salle1",
+                "nombrePlace": 11,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/salles/1"
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/salles/1"
+                  },
+                  "cinema": {
+                    "href": "http://192.168.43.127:8080/salles/1/cinema"
+                  },
+                  "projections": {
+                    "href": "http://192.168.43.127:8080/salles/1/projections{?projection}",
+                    "templated": true
+                  },
+                  "places": {
+                    "href": "http://192.168.43.127:8080/salles/1/places"
+                  }
+                }
               },
-              "places": {"href": "http://192.168.8.106:8080/salles/37/places"},
-              "cinema": {"href": "http://192.168.8.106:8080/salles/37/cinema"}
+              {
+                "id": 2,
+                "name": "Salle2",
+                "nombrePlace": 8,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/salles/2"
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/salles/2"
+                  },
+                  "cinema": {
+                    "href": "http://192.168.43.127:8080/salles/2/cinema"
+                  },
+                  "projections": {
+                    "href": "http://192.168.43.127:8080/salles/2/projections{?projection}",
+                    "templated": true
+                  },
+                  "places": {
+                    "href": "http://192.168.43.127:8080/salles/2/places"
+                  }
+                }
+              },
+              {
+                "id": 3,
+                "name": "Salle3",
+                "nombrePlace": 7,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/salles/3"
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/salles/3"
+                  },
+                  "cinema": {
+                    "href": "http://192.168.43.127:8080/salles/3/cinema"
+                  },
+                  "projections": {
+                    "href": "http://192.168.43.127:8080/salles/3/projections{?projection}",
+                    "templated": true
+                  },
+                  "places": {
+                    "href": "http://192.168.43.127:8080/salles/3/places"
+                  }
+                }
+              }
+            ]
+          },
+          "_links": {
+            "self": {
+              "href": "http://192.168.43.127:8080/cinemas/1/salles"
             }
           }
-        ]
-      }
-    });
+        }
+    );
   }
 
   static Future<Map<String, dynamic>> loadProjections(salle) {
-    return Future.value({
-      "_embedded": {
-        "projections": [
-          {
-            "id": 1,
-            "salle": {"id": 1, "name": "Salle1", "nombrePlace": 18},
-            "tickets": [
+    return Future.value(
+        {
+          "_embedded": {
+            "projections": [
               {
                 "id": 1,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
+                "tickets": [
+                  {
+                    "id": 1,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 2,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 3,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 4,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 5,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 6,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 7,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 8,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 9,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 10,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 11,
+                    "nomClient": null,
+                    "prix": 70,
+                    "codePayement": 0,
+                    "reserve": false
+                  }
+                ],
+                "prix": 70,
+                "salle": {
+                  "id": 1,
+                  "name": "Salle1",
+                  "nombrePlace": 11
+                },
+                "seance": {
+                  "heureDebut": "12:00:00"
+                },
+                "film": {
+                  "id": 1,
+                  "titre": "12 Homme en colere",
+                  "decription": null,
+                  "realisateur": null,
+                  "dateSortie": null,
+                  "duree": 2.5,
+                  "photo": "12Hommeencolere.jpg"
+                },
+                "dateProjection": "2021-06-13T23:00:00.000+00:00",
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/projections/1"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/projections/1{?projection}",
+                    "templated": true
+                  },
+                  "seance": {
+                    "href": "http://192.168.43.127:8080/projections/1/seance"
+                  },
+                  "film": {
+                    "href": "http://192.168.43.127:8080/projections/1/film"
+                  },
+                  "tickets": {
+                    "href": "http://192.168.43.127:8080/projections/1/tickets{?projection}",
+                    "templated": true
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/projections/1/salle"
+                  }
+                }
               },
               {
                 "id": 2,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
+                "tickets": [
+                  {
+                    "id": 12,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 13,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 14,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 15,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 16,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 17,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 18,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 19,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 20,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 21,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 22,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  }
+                ],
+                "prix": 30,
+                "salle": {
+                  "id": 1,
+                  "name": "Salle1",
+                  "nombrePlace": 11
+                },
+                "seance": {
+                  "heureDebut": "15:00:00"
+                },
+                "film": {
+                  "id": 2,
+                  "titre": "Forrest Gump",
+                  "decription": null,
+                  "realisateur": null,
+                  "dateSortie": null,
+                  "duree": 1.5,
+                  "photo": "ForrestGump.jpg"
+                },
+                "dateProjection": "2021-06-13T23:00:00.000+00:00",
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/projections/2"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/projections/2{?projection}",
+                    "templated": true
+                  },
+                  "seance": {
+                    "href": "http://192.168.43.127:8080/projections/2/seance"
+                  },
+                  "film": {
+                    "href": "http://192.168.43.127:8080/projections/2/film"
+                  },
+                  "tickets": {
+                    "href": "http://192.168.43.127:8080/projections/2/tickets{?projection}",
+                    "templated": true
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/projections/2/salle"
+                  }
+                }
               },
               {
                 "id": 3,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
+                "tickets": [
+                  {
+                    "id": 23,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 24,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 25,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 26,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 27,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 28,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 29,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 30,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 31,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 32,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 33,
+                    "nomClient": null,
+                    "prix": 100,
+                    "codePayement": 0,
+                    "reserve": false
+                  }
+                ],
+                "prix": 100,
+                "salle": {
+                  "id": 1,
+                  "name": "Salle1",
+                  "nombrePlace": 11
+                },
+                "seance": {
+                  "heureDebut": "17:00:00"
+                },
+                "film": {
+                  "id": 3,
+                  "titre": "Green Book",
+                  "decription": null,
+                  "realisateur": null,
+                  "dateSortie": null,
+                  "duree": 1,
+                  "photo": "GreenBook.jpg"
+                },
+                "dateProjection": "2021-06-13T23:00:00.000+00:00",
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/projections/3"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/projections/3{?projection}",
+                    "templated": true
+                  },
+                  "seance": {
+                    "href": "http://192.168.43.127:8080/projections/3/seance"
+                  },
+                  "film": {
+                    "href": "http://192.168.43.127:8080/projections/3/film"
+                  },
+                  "tickets": {
+                    "href": "http://192.168.43.127:8080/projections/3/tickets{?projection}",
+                    "templated": true
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/projections/3/salle"
+                  }
+                }
               },
               {
                 "id": 4,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
+                "tickets": [
+                  {
+                    "id": 34,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 35,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 36,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 37,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 38,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 39,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 40,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 41,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 42,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 43,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 44,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  }
+                ],
+                "prix": 30,
+                "salle": {
+                  "id": 1,
+                  "name": "Salle1",
+                  "nombrePlace": 11
+                },
+                "seance": {
+                  "heureDebut": "19:00:00"
+                },
+                "film": {
+                  "id": 4,
+                  "titre": "La ligne Verte",
+                  "decription": null,
+                  "realisateur": null,
+                  "dateSortie": null,
+                  "duree": 1.5,
+                  "photo": "LaligneVerte.jpg"
+                },
+                "dateProjection": "2021-06-13T23:00:00.000+00:00",
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/projections/4"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/projections/4{?projection}",
+                    "templated": true
+                  },
+                  "seance": {
+                    "href": "http://192.168.43.127:8080/projections/4/seance"
+                  },
+                  "film": {
+                    "href": "http://192.168.43.127:8080/projections/4/film"
+                  },
+                  "tickets": {
+                    "href": "http://192.168.43.127:8080/projections/4/tickets{?projection}",
+                    "templated": true
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/projections/4/salle"
+                  }
+                }
               },
               {
                 "id": 5,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 6,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 7,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 8,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 9,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 10,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 11,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 12,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 13,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 14,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 15,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 16,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 17,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 18,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
+                "tickets": [
+                  {
+                    "id": 45,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 46,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 47,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 48,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 49,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 50,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 51,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 52,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 53,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 54,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  },
+                  {
+                    "id": 55,
+                    "nomClient": null,
+                    "prix": 30,
+                    "codePayement": 0,
+                    "reserve": false
+                  }
+                ],
+                "prix": 30,
+                "salle": {
+                  "id": 1,
+                  "name": "Salle1",
+                  "nombrePlace": 11
+                },
+                "seance": {
+                  "heureDebut": "21:00:00"
+                },
+                "film": {
+                  "id": 5,
+                  "titre": "Le Parrain",
+                  "decription": null,
+                  "realisateur": null,
+                  "dateSortie": null,
+                  "duree": 1.5,
+                  "photo": "LeParrain.jpg"
+                },
+                "dateProjection": "2021-06-13T23:00:00.000+00:00",
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/projections/5"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/projections/5{?projection}",
+                    "templated": true
+                  },
+                  "seance": {
+                    "href": "http://192.168.43.127:8080/projections/5/seance"
+                  },
+                  "film": {
+                    "href": "http://192.168.43.127:8080/projections/5/film"
+                  },
+                  "tickets": {
+                    "href": "http://192.168.43.127:8080/projections/5/tickets{?projection}",
+                    "templated": true
+                  },
+                  "salle": {
+                    "href": "http://192.168.43.127:8080/projections/5/salle"
+                  }
+                }
               }
-            ],
-            "prix": 30.0,
-            "film": {
-              "id": 1,
-              "titre": "12 Homme en colere",
-              "decription": null,
-              "realisateur": null,
-              "dateSortie": null,
-              "duree": 3.0,
-              "photo":
-                  "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1040&q=80"
-            },
-            "seance": {"heureDebut": "12:00:00"},
-            "dateProjection": "2021-06-11T23:00:00.000+00:00",
-            "_links": {
-              "self": {"href": "http://192.168.8.106:8080/projections/1"},
-              "projection": {
-                "href": "http://192.168.8.106:8080/projections/1{?projection}",
-                "templated": true
-              },
-              "seance": {
-                "href": "http://192.168.8.106:8080/projections/1/seance"
-              },
-              "tickets": {
-                "href":
-                    "http://192.168.8.106:8080/projections/1/tickets{?projection}",
-                "templated": true
-              },
-              "film": {"href": "http://192.168.8.106:8080/projections/1/film"},
-              "salle": {"href": "http://192.168.8.106:8080/projections/1/salle"}
-            }
+            ]
           },
-          {
-            "id": 2,
-            "salle": {"id": 1, "name": "Salle1", "nombrePlace": 18},
-            "tickets": [
-              {
-                "id": 1,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 2,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 3,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 4,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 5,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 6,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 7,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 8,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 9,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 10,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 11,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 12,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 13,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 14,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 15,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 16,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 17,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              },
-              {
-                "id": 18,
-                "nomClient": null,
-                "prix": 30.0,
-                "codePayement": 0,
-                "reserve": false
-              }
-            ],
-            "prix": 30.0,
-            "film": {
-              "id": 1,
-              "titre": "12 Homme en colere",
-              "decription": null,
-              "realisateur": null,
-              "dateSortie": null,
-              "duree": 3.0,
-              "photo":
-                  "http://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-            },
-            "seance": {"heureDebut": "12:00:00"},
-            "dateProjection": "2021-06-11T23:00:00.000+00:00",
-            "_links": {
-              "self": {"href": "http://192.168.8.106:8080/projections/1"},
-              "projection": {
-                "href": "http://192.168.8.106:8080/projections/1{?projection}",
-                "templated": true
-              },
-              "seance": {
-                "href": "http://192.168.8.106:8080/projections/1/seance"
-              },
-              "tickets": {
-                "href":
-                    "http://192.168.8.106:8080/projections/1/tickets{?projection}",
-                "templated": true
-              },
-              "film": {"href": "http://192.168.8.106:8080/projections/1/film"},
-              "salle": {"href": "http://192.168.8.106:8080/projections/1/salle"}
+          "_links": {
+            "self": {
+              "href": "http://192.168.43.127:8080/salles/1/projections?projection=filmNeededInfoProjection"
             }
-          },
-        ]
-      }
-    });
+          }
+        }
+    );
   }
 
   static Future<Map<String, dynamic>> onLoadTicket(projection, salle) {
-    return Future.value({
-      "_embedded": {
-        "tickets": [
-          {
-            "id": 19,
-            "nomClient": null,
-            "codePayement": 0,
-            "prix": 70,
-            "place": {
-              "numero": 1,
-              "longitude": 0,
-              "latidude": 0,
-              "altitude": 0
-            },
-            "reserve": false,
-            "_links": {
-              "self": {"href": "http://192.168.8.106:8080/tickets/19"},
-              "ticket": {
-                "href": "http://192.168.8.106:8080/tickets/19{?projection}",
-                "templated": true
+    return Future.value(
+        {
+          "_embedded": {
+            "tickets": [
+              {
+                "id": 1,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 1,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/1"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/1{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/1/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/1/projection{?projection}",
+                    "templated": true
+                  }
+                }
               },
-              "projection": {
-                "href":
-                    "http://192.168.8.106:8080/tickets/19/projection{?projection}",
-                "templated": true
+              {
+                "id": 2,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 2,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/2"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/2{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/2/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/2/projection{?projection}",
+                    "templated": true
+                  }
+                }
               },
-              "place": {"href": "http://192.168.8.106:8080/tickets/19/place"}
+              {
+                "id": 3,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 3,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/3"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/3{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/3/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/3/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 4,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 4,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/4"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/4{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/4/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/4/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 5,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 5,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/5"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/5{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/5/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/5/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 6,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 6,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/6"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/6{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/6/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/6/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 7,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 7,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/7"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/7{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/7/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/7/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 8,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 8,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/8"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/8{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/8/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/8/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 9,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 9,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/9"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/9{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/9/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/9/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 10,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 10,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/10"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/10{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/10/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/10/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              },
+              {
+                "id": 11,
+                "prix": 70,
+                "codePayement": 0,
+                "nomClient": null,
+                "place": {
+                  "numero": 11,
+                  "longitude": 0,
+                  "latidude": 0,
+                  "altitude": 0
+                },
+                "reserve": false,
+                "_links": {
+                  "self": {
+                    "href": "http://192.168.43.127:8080/tickets/11"
+                  },
+                  "ticket": {
+                    "href": "http://192.168.43.127:8080/tickets/11{?projection}",
+                    "templated": true
+                  },
+                  "place": {
+                    "href": "http://192.168.43.127:8080/tickets/11/place"
+                  },
+                  "projection": {
+                    "href": "http://192.168.43.127:8080/tickets/11/projection{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ]
+          },
+          "_links": {
+            "self": {
+              "href": "http://192.168.43.127:8080/projections/1/tickets?projection=ticketProj"
             }
           }
-        ]
-      }
-    });
+        }
+    );
   }
 }
