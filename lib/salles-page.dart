@@ -51,19 +51,18 @@ class _SallesPageState extends State<SallesPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Image.network(
-                                      GlobalData.host +
-                                          "/imageFilm/${this.listSalles[index]['currentProjection']['film']['id']}",
+                                    // Image.network(
+                                    //   GlobalData.host +
+                                    //       "/imageFilm/${this.listSalles[index]['currentProjection']['film']['id']}",
                                       //key: ValueKey(new Random().nextInt(100)),
-                                      width: 150,
+                                    Image.network("${listSalles[index]['currentProjection']['film']['photo']}", width: 150,
                                     ),
                                     IntrinsicWidth(
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.stretch,
                                         children: <Widget>[
-                                          ...(this.listSalles[index]
-                                                      ['projections']
+                                          ...(listSalles[index]['projections']
                                                   as List<dynamic>)
                                               .map((projection) {
                                             return ElevatedButton(
@@ -225,21 +224,28 @@ class _SallesPageState extends State<SallesPage> {
   }
 
   void onLoadTickets(projection, salle) {
-    String url = projection['_links']['tickets']['href']
-        .toString()
-        .replaceAll('{?projection}', '?projection=ticketProj');
-    //String url2=GlobalData.host+"/projections/${projection['id']}tickets?projections=ticketsProj";
-    print('ticket  ' + url);
-    http.get(Uri.parse(url)).then((resp) {
+    MockAPI.onLoadTicket(projection, salle).then((resp) => {
       setState(() {
-        projection['listTickets'] =
-            json.decode(resp.body)['_embedded']['tickets'];
-        salle['currentProjection'] = projection;
-        projection['availablePlacesCount'] = numberPlacesAvailable(projection);
-      });
-    }).catchError((err) {
-      print(err);
+         projection['listTickets'] = resp['_embedded']['tickets'];
+            salle['currentProjection'] = projection;
+            projection['availablePlacesCount'] = numberPlacesAvailable(projection);
+      })
     });
+    // String url = projection['_links']['tickets']['href']
+    //     .toString()
+    //     .replaceAll('{?projection}', '?projection=ticketProj');
+    // //String url2=GlobalData.host+"/projections/${projection['id']}tickets?projections=ticketsProj";
+    // print('ticket  ' + url);
+    // http.get(Uri.parse(url)).then((resp) {
+    //   setState(() {
+    //     projection['listTickets'] =
+    //         json.decode(resp.body)['_embedded']['tickets'];
+    //     salle['currentProjection'] = projection;
+    //     projection['availablePlacesCount'] = numberPlacesAvailable(projection);
+    //   });
+    // }).catchError((err) {
+    //   print(err);
+    // });
   }
 
   numberPlacesAvailable(projection) {
