@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_cinema_app/MenuItem.dart';
+import 'package:movie_cinema_app/salles-page.dart';
 import 'package:movie_cinema_app/setting-page.dart';
 import 'package:movie_cinema_app/villes-page.dart';
 
@@ -17,8 +18,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  
   final menus = [
     {'title': 'Home', 'icon': Icon(Icons.home), 'page':  VillePage()},
+    {'title': 'Test Salles', 'icon': Icon(Icons.home), 'page':  SallesPage({
+      'name': "Test",
+      'salles': []
+    })},
     {'title': 'Settings', 'icon': Icon(Icons.settings), 'page': SettingPage()}
   ];
 

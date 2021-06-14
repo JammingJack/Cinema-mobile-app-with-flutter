@@ -46,6 +46,7 @@ class _CinemasPageState extends State<CinemasPage> {
     super.initState();
     loadCinemas();
   }
+  
   loadCinemas(){
     String url = this.widget.ville['_links']['cinemas']['href'];;
     http.get(Uri.parse(url))

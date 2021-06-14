@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie_cinema_app/GlobalVariables.dart';
+import 'package:movie_cinema_app/mock_api.dart';
 import 'dart:convert';
 import './cinemas-page.dart';
+
 class VillePage extends StatefulWidget {
 
   @override
@@ -38,21 +40,28 @@ class _VillePageState extends State<VillePage> {
       ),
     );
   }
+  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     loadVille();
   }
-  void loadVille(){
-    String url = GlobalData.host+"/villes";
-    http.get(Uri.parse(url))
-      .then((resp){
-        setState(() {
-          this.listVilles=json.decode(resp.body)['_embedded']['villes'];
-        });
-    }).catchError((e){
-      print(e);
+  void loadVille() {
+    MockAPI.loadVille().then((resp) {
+      setState(() {
+        listVilles = resp['_embedded']['villes'];
+      });
     });
+
+    // String url = GlobalData.host+"/villes";
+    // http.get(Uri.parse(url))
+    //   .then((resp){
+    //     setState(() {
+    //       this.listVilles=json.decode(resp.body)['_embedded']['villes'];
+    //     });
+    // }).catchError((e){
+    //   print(e);
+    // });
   }
 }
