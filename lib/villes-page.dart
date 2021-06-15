@@ -45,6 +45,7 @@ class _VillePageState extends State<VillePage> {
     loadVille();
   }
   void loadVille(){
+
     String url = GlobalData.host+"/villes";
     http.get(Uri.parse(url))
       .then((resp){

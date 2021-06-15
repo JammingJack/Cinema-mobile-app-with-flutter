@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:developer';
 import 'dart:convert';
@@ -14,7 +15,12 @@ class SallesPage extends StatefulWidget {
 }
 
 class _SallesPageState extends State<SallesPage> {
+  Map<int,int> pressCounter;
   List<dynamic> listSalles;
+  List<dynamic> listSelectedTickets=[];
+  List<int> listSelectedTicketsPlaceNumbers=[];
+  TextEditingController clientNameController = new TextEditingController();
+  TextEditingController codePayementController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +96,7 @@ class _SallesPageState extends State<SallesPage> {
                                   Container(
                                     padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                                     child: TextField(
+                                      controller: clientNameController,
                                       decoration: InputDecoration(
                                           hintText: "Votre Nom : ",
                                           hintStyle: TextStyle(
@@ -101,6 +108,7 @@ class _SallesPageState extends State<SallesPage> {
                                   Container(
                                     padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
                                     child: TextField(
+                                      controller: codePayementController,
                                       decoration: InputDecoration(
                                           hintText: "Code Payement : ",
                                           hintStyle: TextStyle(
@@ -111,21 +119,21 @@ class _SallesPageState extends State<SallesPage> {
                                   ),
                                   Container(
                                     padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                          hintText: "Numeros des Tickets : ",
-                                          hintStyle: TextStyle(
-                                            color: Colors.black,
-                                          )
-                                      ),
-                                    ),
+                                    child: Text(listSelectedTicketsPlaceNumbers.toString()),
                                   ),
                                   Container(
                                     width: double.infinity,
                                     padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-                                    child: ElevatedButton(onPressed: (){}, child: Text("Acheter!!"),style: ElevatedButton.styleFrom(
+                                    child: ElevatedButton(
+                                      onPressed: (){
+                                        makeTransaction();
+                                      },
+                                      child: Text("Acheter!!"
+                                      ),
+                                      style: ElevatedButton.styleFrom(
                                       primary: Colors.lightGreen,
-                                    ),),
+                                    ),
+                                    ),
                                   ),
                                   Wrap(
                                     children: <Widget> [
@@ -137,6 +145,8 @@ class _SallesPageState extends State<SallesPage> {
                                             child: ElevatedButton(
                                               child: Text("${ticket['place']['numero']}", style: TextStyle(fontSize: 11),),
                                               onPressed: (){
+
+                                                onTicketSelect(ticket);
 
                                               },
                                             ),
@@ -208,5 +218,41 @@ class _SallesPageState extends State<SallesPage> {
       if(projection['tickets'][i]['reserve']==false)++count;
     }
     return count;
+  }
+
+  Future<void> makeTransaction() async {
+    String clientName = clientNameController.text;
+    int codePayment = int.parse(codePayementController.text);
+    List<int> ticketIds = [];
+    for(int i=0;i<listSelectedTickets.length;i++){
+      ticketIds.insert(i, listSelectedTickets.elementAt(i)['id']);
+    }
+    final response = await http.post(
+        Uri.parse(GlobalData.host+"/payerTickets"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: json.encode({
+          "nomClient":clientName,
+          "codePayement":codePayment,
+          "tickets":ticketIds,
+    }));
+    if(response.statusCode==200){
+      print("success");
+    }else{
+      throw Exception(response.toString());
+    }
+  }
+  onTicketSelect(ticket){
+    setState(() {
+      if(listSelectedTickets.contains(ticket)){
+        listSelectedTickets.remove(ticket);
+        listSelectedTicketsPlaceNumbers.remove(ticket['place']['numero']);
+      }else{
+        listSelectedTickets.add(ticket);
+        listSelectedTicketsPlaceNumbers.add(ticket['place']['numero']);
+      }
+
+    });
   }
 }
