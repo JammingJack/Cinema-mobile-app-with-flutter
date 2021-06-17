@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:developer';
 import 'dart:convert';
@@ -25,7 +26,7 @@ class _SallesPageState extends State<SallesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Salles de ${widget.cinema['name']}'),
+        title: Text('Salles de ${widget.cinema['name']}',style: GoogleFonts.pacifico(),),
       ),
       body: Center(
           child: (listSalles == null)
@@ -243,14 +244,20 @@ class _SallesPageState extends State<SallesPage> {
       throw Exception(response.toString());
     }
   }
-  onTicketSelect(ticket){
+ Widget onTicketSelect(ticket){
     setState(() {
       if(listSelectedTickets.contains(ticket)){
         listSelectedTickets.remove(ticket);
         listSelectedTicketsPlaceNumbers.remove(ticket['place']['numero']);
+        return AlertDialog(
+          title: Text("succes"),
+        );
       }else{
         listSelectedTickets.add(ticket);
         listSelectedTicketsPlaceNumbers.add(ticket['place']['numero']);
+        return AlertDialog(
+          title: Text("failure"),
+        );
       }
 
     });

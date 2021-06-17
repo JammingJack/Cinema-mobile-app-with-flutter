@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_cinema_app/MenuItem.dart';
 import 'package:movie_cinema_app/setting-page.dart';
 import 'package:movie_cinema_app/villes-page.dart';
@@ -61,11 +62,12 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         appBar: AppBar(
-          title: Text('Cinema App'),
+          title: Text('Cine'
+              'App',style: GoogleFonts.pacifico(),),
         ),
         body: Center(
-          child: Text('hello flutter',
-              style: TextStyle(color: Colors.amber, fontSize: 23)),
+          child: Image(image: AssetImage("./images/cinema_logo_home.png"),
+          width: 800,),
         ));
   }
 }

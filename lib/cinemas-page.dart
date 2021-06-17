@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -15,25 +16,39 @@ class _CinemasPageState extends State<CinemasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Cinema de ${widget.ville['name']}'),),
+      appBar: AppBar(title: Text('Cinemas de ${widget.ville['name']}',style: GoogleFonts.pacifico(),),),
       body: Center(
           child: (listCinemas==null)?CircularProgressIndicator():
           ListView.builder(
               itemCount: (listCinemas==null)?0:listCinemas.length,
               itemBuilder: (context,index){
-                return Card(
-                  color: Colors.deepOrangeAccent,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.white
-                    ),
-                    child: Text(this.listCinemas[index]['name'],style: TextStyle(color: Colors.red)),
+                return Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Card(
+                        shadowColor: Colors.deepOrangeAccent,
+                        elevation: 12,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50)
+                        ),
+                        color: Colors.deepOrangeAccent,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                minimumSize: Size(double.infinity, 80)
+                          ),
+                          child: Text(this.listCinemas[index]['name'],style: GoogleFonts.lobsterTwo(textStyle: TextStyle(color: Colors.black87, fontSize: 25))),
 
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context)=>SallesPage(listCinemas[index])));
-                    },
-                  ),
+                          onPressed: (){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=>SallesPage(listCinemas[index])));
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12,),
+                  ],
                 );
               })
       ),
